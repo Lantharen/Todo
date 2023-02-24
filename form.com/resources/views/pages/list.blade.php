@@ -20,7 +20,13 @@
                         <tr>
                             <th scope="row">{{ $todo->title }}</th>
                             <td>{{ $todo->content }}</td>
-                            <td>{{ $todo->status }}</td>
+                            <td>
+                                @if($todo->status)
+                                    <span class="badge text-bg-success">Done</span>
+                                @else
+                                    <span class="badge text-bg-warning">Pending</span>
+                                @endif
+                            </td>
                             <td>@mdo</td>
                         </tr>
                     @endforeach
