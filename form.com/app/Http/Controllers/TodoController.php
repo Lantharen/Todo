@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUpdateTodoRequest;
 use App\Models\Todo;
-use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
     public function index()
     {
+        $todos = Todo::query()
+            ->orderBy('created_at', 'desc')
+            ->orderBy('status')
+            ->paginate();
+
         return view('pages.list', [
-            'todos' => Todo::paginate(),
+            'todos' => $todos,
         ]);
     }
 
