@@ -32,7 +32,16 @@
                                     <span class="badge text-bg-warning">Pending</span>
                                 @endif
                             </td>
-                            <td>@mdo</td>
+                            <td>
+                                <form action="{{ route('todo.toggle-status') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $todo->id }}">
+                                    <input type="hidden" name="status" value="{{ $todo->status ? '0' : '1' }}">
+                                    <button type="submit" class="btn btn-sm {{ $todo->status ? 'btn-outline-warning' : 'btn-outline-success' }}">
+                                        {{ $todo->status ? 'Re-open' : 'Done' }}
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
