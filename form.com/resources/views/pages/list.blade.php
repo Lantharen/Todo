@@ -5,6 +5,11 @@
         <div class="row">
             <div class="col">
 
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="display-4">Todo List</h1>
+                    <a href="{{ route('todo.create') }}" class="btn btn-sm btn-primary">Create</a>
+                </div>
+
                 <table class="table">
 
                     <thead>
