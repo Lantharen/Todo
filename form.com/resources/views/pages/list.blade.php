@@ -3,6 +3,7 @@
 @section('page.content')
     <div class="container">
         <div class="row">
+            <div class="col">
 
                 <table class="table">
 
@@ -15,19 +16,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($list as $todo)
-                    <tr>
-                        <th scope="row">{{ $todo->title }}</th>
-                        <td>{{ $todo->content }}</td>
-                        <td>{{ $todo->status }}</td>
-                        <td>@mdo</td>
-                    </tr>
+                    @foreach($todos as $todo)
+                        <tr>
+                            <th scope="row">{{ $todo->title }}</th>
+                            <td>{{ $todo->content }}</td>
+                            <td>{{ $todo->status }}</td>
+                            <td>@mdo</td>
+                        </tr>
                     @endforeach
                     </tbody>
 
                 </table>
 
+                {{ $todos->links() }}
+            </div>
         </div>
     </div>
 @endsection
-

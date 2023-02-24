@@ -9,10 +9,8 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $todos = Todo::all();
-
         return view('pages.list',[
-            'list' => Todo::paginate(),
+            'todos' => Todo::paginate(),
         ]);
 
     }
