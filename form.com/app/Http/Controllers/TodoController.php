@@ -44,4 +44,19 @@ class TodoController extends Controller
 
         return redirect()->back();
     }
+
+    public function edit(int $id)
+    {
+        // TODO: Load todo by ID and output in form
+    }
+
+    public function update(CreateUpdateTodoRequest $request)
+    {
+        // TODO: Handle update request
+    }
+
+    public function delete(int $id)
+    {
+        // TODO: Handle delete request
+    }
 }
