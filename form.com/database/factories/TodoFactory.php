@@ -19,7 +19,7 @@ class TodoFactory extends Factory
     {
         return [
             'title' => Str::title(fake()->words(3, true)),
-            'content' => fake()->words(10,true),
+            'content' => fake()->words(10, true),
         ];
     }
 }
