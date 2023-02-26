@@ -47,12 +47,27 @@ class TodoController extends Controller
 
     public function edit(int $id)
     {
-        // TODO: Load todo by ID and output in form
+        $todo = Todo::query()->findOrFail($id);
+
+        return view('pages.form', [
+            'todo' => $todo
+        ]);
     }
 
     public function update(CreateUpdateTodoRequest $request)
     {
-        // TODO: Handle update request
+        $todo = Todo::query()->findOrFail(
+            $request->input('id')
+        );
+
+//        $todo->update([
+//            'title' => $request->input('title'),
+//            'content' => $request->input('content')
+//        ]);
+
+        $todo->update($request->only('title', 'content'));
+
+        return redirect()->route('todo.list');
     }
 
     public function delete(int $id)

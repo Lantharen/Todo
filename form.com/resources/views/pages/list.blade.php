@@ -26,21 +26,16 @@
                             <th scope="row">{{ $todo->title }}</th>
                             <td>{{ $todo->content }}</td>
                             <td>
-                                @if($todo->status)
-                                    <span class="badge text-bg-success">Done</span>
-                                @else
-                                    <span class="badge text-bg-warning">Pending</span>
-                                @endif
+                                @include('pages.includes.status-indicator', [
+                                    'status' => $todo->status
+                                ])
                             </td>
                             <td>
-                                <form action="{{ route('todo.toggle-status') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $todo->id }}">
-                                    <input type="hidden" name="status" value="{{ $todo->status ? '0' : '1' }}">
-                                    <button type="submit" class="btn btn-sm {{ $todo->status ? 'btn-outline-warning' : 'btn-outline-success' }}">
-                                        {{ $todo->status ? 'Re-open' : 'Done' }}
-                                    </button>
-                                </form>
+                                @include('pages.includes.status-toggler', [
+                                    'id' => $todo->id,
+                                    'status' => $todo->status
+                                ])
+                                <a href="{{ route('todo.edit', ['id' => $todo->id]) }}" class="btn btn-primary">Edit</a>
                             </td>
                         </tr>
                     @endforeach
