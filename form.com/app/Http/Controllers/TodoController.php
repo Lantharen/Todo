@@ -72,13 +72,11 @@ class TodoController extends Controller
 
     public function delete(int $id)
     {
-        $todo = Todo::query()->findOrFail($id)->delete();
+        Todo::query()->findOrFail($id)->delete();
 
 
 
-        return view('pages.list', [
-            'todo' => $todo
-        ]);
+        return redirect()->back();
 
     }
 }

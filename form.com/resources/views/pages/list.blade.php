@@ -39,7 +39,7 @@
                                 <a href="{{ route('todo.edit', ['id' => $todo->id]) }}" class="btn btn-primary">Edit</a>
                             </td>
                             <td>
-                                <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="get">
+                                <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="post">
                                     @csrf
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
