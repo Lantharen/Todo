@@ -18,6 +18,7 @@
                         <th scope="col">Content</th>
                         <th scope="col">Status</th>
                         <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,13 @@
                                     'status' => $todo->status
                                 ])
                                 <a href="{{ route('todo.edit', ['id' => $todo->id]) }}" class="btn btn-primary">Edit</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('todo.delete', ['id' => $todo->id]) }}" method="get">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach
