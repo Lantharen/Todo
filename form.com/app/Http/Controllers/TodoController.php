@@ -74,6 +74,6 @@ class TodoController extends Controller
     {
         Todo::query()->findOrFail($id)?->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Удалено!');
     }
 }
